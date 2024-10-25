@@ -1,0 +1,6 @@
+train: C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/datasets-converted/images/train
+val: C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/datasets-converted/images/val
+nc: 1
+obb: true
+
+names: ['0']

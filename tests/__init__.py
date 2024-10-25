@@ -1,5 +1,4 @@
 # Ultralytics YOLO 🚀, AGPL-3.0 license
-
 from ultralytics.utils import ASSETS, ROOT, WEIGHTS_DIR, checks
 
 # Constants used in tests
