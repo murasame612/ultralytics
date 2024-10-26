@@ -5,3 +5,5 @@ model = YOLO("C:/Users/chenj/Documents/GitHub/ultralytics/runs/obb/train6/weight
 
 results = model("./rotateimages/159.jpg",
                 save=True)
+
+print(results)
