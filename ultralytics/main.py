@@ -4,5 +4,5 @@ model = YOLO("../yolov8n-obb.pt")
 
 # results = model("https://ultralytics.com/images/bus.jpg",show=True,save=True)
 
-model.train(data="C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/config.yaml",
+model.train(data="C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/databoost.yaml",
             task ='obb',epochs=100)

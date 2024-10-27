@@ -1,0 +1,6 @@
+train: C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/Traindatasets/images/train
+val: C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/Traindatasets/images/val
+nc: 1
+obb: true
+
+names: ['0']
