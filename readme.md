@@ -75,9 +75,7 @@ model.train(data="ultralytics/databoost.yaml",
 
 ### 4.得到目标检测模型
 
-训练完的模型会保存到[训练模型保存路径](runs)
+训练完的模型会保存到/runs
 
-![结果](runs/obb/train8/results.png)
-![结果](runs/obb/train8/val_batch0_pred.jpg)
-
+![example](examples/val_batch0_pred.jpg)
 
