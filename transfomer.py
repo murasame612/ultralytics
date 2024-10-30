@@ -6,8 +6,8 @@ import random
 import cv2
 
 # 输入输出路径
-input_dir = 'C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/datasets'
-output_dir = 'C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/Traindatasets-test'
+input_dir = 'ultralytics/datasets'
+output_dir = 'ultralytics/Traindatasets-test'
 
 # 创建数据增强方法
 transform = A.Compose([

@@ -38,6 +38,46 @@ input_dir = 'C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/datasets'
 output_dir = 'C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/Traindatasets-test'
 ```
 
-### transformer.py只会对你的train数据集进行转换
-所以说我们还需要单独将验证数据集val来普通的旋转和加噪，并且把HBB转换为
-obb格式
+### transformer.py会对你的train和val数据集进行转换
+对数据集val进行普通的旋转，对数据集train经行随机的加噪，并且把HBB转换为
+obb格式。
+
+### 2.填写yaml配置文件
+
+新建一个[ultralytics/config.yaml](ultralytics/config.yaml)文件，里面填写了验证集
+和训练集图片的存储位置
+
+    train: C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/datasets-converted/images/train
+    val: C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/datasets-converted/images/val
+    nc: 1
+    obb: true
+    names: ['0']
+
+train指的是训练集图片的位置，val指明了测试集图片的位置
+nc=标签数，names存储了标签的名字
+
+| 变量名     | 含义        |
+|---------|-----------|
+| train   | 训练集图片的位置  |
+| val     | 测试集图片的位置  |
+| nc      | 标签数       |
+| names   | 标签名列表     |
+
+### 3.训练模型
+
+在[main.py](ultralytics/main.py)中训练模型
+```python
+from ultralytics import YOLO
+model = YOLO("../yolov8n-obb.pt")#预加载obb模型
+model.train(data="ultralytics/databoost.yaml",
+            task ='obb',epochs=100)
+```
+
+### 4.得到目标检测模型
+
+训练完的模型会保存到[训练模型保存路径](runs)
+
+![结果](runs/obb/train8/results.png)
+![结果](runs/obb/train8/val_batch0_pred.jpg)
+
+

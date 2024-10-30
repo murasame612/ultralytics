@@ -41,8 +41,8 @@ def visualize_bboxes(image_path, bboxes):
     plt.show()
 
 # 示例使用
-image_path = 'C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/TrainDatasets/images/train/149_aug_1.jpg'
-label_path = 'C:/Users/chenj/Documents/GitHub/ultralytics/ultralytics/TrainDatasets/labels/train/149_aug_1.txt'
+image_path = 'ultralytics/testData/images/val/145_aug_0.jpg'
+label_path = 'ultralytics/testData/labels/val/145_aug_0.txt'
 
 # 从标签文件中读取标注框
 bboxes = read_bboxes_from_txt(label_path)
