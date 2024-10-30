@@ -457,6 +457,7 @@ class Exporter:
     @try_export
     def export_openvino(self, prefix=colorstr("OpenVINO:")):
         """YOLO OpenVINO export."""
+        # WARNING: numpy>=2.0.0 issue with OpenVINO on macOS https://github.com/ultralytics/ultralytics/pull/17221
         check_requirements(f'openvino{"<=2024.0.0" if ARM64 else ">=2024.0.0"}')  # fix OpenVINO issue on ARM64
         import openvino as ov
 
@@ -889,8 +890,10 @@ class Exporter:
             tmp_file = f / "tmp_tflite_int8_calibration_images.npy"  # int8 calibration images file
             if self.args.data:
                 f.mkdir()
-                images = [batch["img"].permute(0, 2, 3, 1) for batch in self.get_int8_calibration_dataloader(prefix)]
-                images = torch.cat(images, 0).float()
+                images = [batch["img"] for batch in self.get_int8_calibration_dataloader(prefix)]
+                images = torch.nn.functional.interpolate(torch.cat(images, 0).float(), size=self.imgsz).permute(
+                    0, 2, 3, 1
+                )
                 np.save(str(tmp_file), images.numpy().astype(np.float32))  # BHWC
                 np_data = [["images", tmp_file, [[[[0, 0, 0]]]], [[[[255, 255, 255]]]]]]
 
